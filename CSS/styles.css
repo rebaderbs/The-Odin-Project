@@ -1,0 +1,185 @@
+/* universal selector*/
+*   {
+    color: purple;
+}
+
+/* type selector*/
+div {
+    color: white;
+}
+
+/* class selector*/
+.alert-text {
+    color: red;
+}
+
+/* id selector; Use ids SPARINGLY; there can only be 1 per PAGE*/
+#title {
+    background-color: red;
+}
+
+/* grouping selector -- How to group classes together that will have the same style declarations, rather than 2 diff ones w/ the same -- makes it easier to edit*/
+.read,
+.unread {
+  color: white;
+  background-color: black;
+}
+
+.read {
+  /* several unique declarations */
+}
+
+.unread {
+  /* several unique declarations */
+}
+
+/* chining selectors -- used if 2 elements have the same class name with an additional diff. class name (see index.html); how you would apply to only ONE of those */
+.subsection.header {
+    color: red;
+}
+
+
+/* chaining a class AND id selectors (see index.html)*/
+.subsection.header {
+    color: red;
+  }
+  
+.subsection#preview {
+    color: blue;
+}
+
+/* descendant combinator -- only elements matching the last selector to be selected if they also have a parent that matches the previous selector*/
+.ancestor .contents {
+    /* some declarations */
+}
+
+/* color and background color example values*/
+p {
+    /* hex example: */
+    color: #1100ff;
+    /* rgb example: */
+    color: rgb(100, 0, 127);
+    /* hsl example: */
+    color: hsl(15, 82%, 56%);
+  }
+
+  /* typography basics & text-align*/
+  p {
+    /* whitespace requires quotes around*/
+    font-family: "DejaVu Sans";
+    /*generic names don't use quotes*/
+    font-family: sans-serif;
+    /*start w/ font you want most and end with generic for fallback*/
+    font-family: "DejaVu Sans", sans-serif;
+
+    /*font size contains no spaces between number and px, no quotes*/
+    font-size: 22px;
+
+    /* font weight affects boldness; word or number between 1 and 1000, in increments of 100*/
+    font-weight: bold;
+    font-weight: 700;
+
+    /* text-align aligns text horizontally */
+    text-align: center;
+  }
+
+  /* image height & width */
+  /* DEFAULTS to actual img file's height/width */
+  /* so proportions aren't lost: use auto for height and px for width */
+  /* include both properties or img takes longer to load */
+  img   {
+    height: auto;
+    width: 500px;
+  }
+
+  /* specificity with cascading ex 1 */
+  /* rule 1 */
+.subsection {
+    color: blue;
+}
+  
+  /* rule 2 THIS TAKES PREFERENCE b/c it's using more class selectors */
+.main .list {
+    color: red; 
+}
+
+/* specificity with cascading ex 2 */
+/* rule 1 THIS TAKES PREFERENCE b/c ID beats class, even though rule 2 has more class selectors*/
+#subsection {
+    color: blue;
+}
+  
+  /* rule 2 */
+.main .list {
+    color: red;
+}
+
+/* specificity with cascading ex 3 */
+/* rule 1 */
+.list #subsection {
+    background-color: yellow;
+    color: blue;
+}
+  
+  /* rule 2 THIS TAKES PREFERENCE b/c it has more class selectors, even though they both have the same amount of id selectors*/
+.main .list #subsection {
+    color: red;
+}
+
+/* comparing selectors ex 1 */
+/* rule 1 */
+.class.second-class {
+    font-size: 12px;
+}
+  
+/* rule 2 */
+.class .second-class {
+    font-size: 24px;
+}
+/* both have same specificity; 1 uses a chaining selector (no space), 2 uses a descendent combinator (the empty space), and both rules have 2 classes and the combinator symbol itself doesn't add to specificity */
+
+
+/* comparing selectors ex 2 */
+/* rule 1 */
+.class.second-class {
+    font-size: 12px;
+}
+  
+/* rule 2 USING CHILD COMBINATOR */
+.class > .second-class {
+    font-size: 24px;
+}
+/* both have same specificity; 2 using child combinator (>) but doesn't change specificity value, both rules have 2 classes so they have same specificity values */
+
+
+/* comparing selectors ex 3 */
+/* rule 1 */
+* {
+    color: black;
+}
+  
+  /* rule 2 */
+h1 {
+    color: orange;
+}
+/* 2 has higher specificity b/c it uses a type selector; even though type selector has the lowest specificity value, the universal selector used in 1 doesn't have a specificity value so rule 2 takes precedence */
+
+
+/* inheritance - CHILD WOULD BE BLUE SINCE THAT DECLARATION DIRECTLY TARGETS IT; whereas the color red is only inherited (even though parent has an id too!!  */
+#parent {
+    color: red;
+}
+  
+.child {
+    color: blue;
+}
+
+/* rule order */
+/* if multiple conflicting rules, whatever rule was the LAST defined is the winner */
+.alert {
+    color: red;
+  }
+  
+.warning {
+    color: yellow;
+}

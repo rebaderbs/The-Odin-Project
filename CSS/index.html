@@ -1,0 +1,58 @@
+<!-- type selectors-->
+<div>Hello, World!</div>
+<div>Hello again!</div>
+<p>Hi...</p>
+<div>Okay, bye.</div>
+
+<!-- class selectors-->
+<div class="alert-text">
+    Please agree to our terms of service.
+</div>
+
+<!-- id selectors-->
+<div id="title">My Awesome 90's Page</div>
+
+<!-- chaining selectors w/ 2 classes-->
+<div>
+    <div class="subsection header">Latest Posts</div>
+    <p class="subsection preview">This is where a preview for a post might go.</p>
+</div>
+
+<!-- chaining selectors w/ class AND id-->
+<div>
+    <div class="subsection header">Latest Posts</div>
+    <p class="subsection" id="preview">This is where a preview for a post might go.</p>
+</div>
+
+<!-- descendant combinator-->
+<div class="ancestor"> <!-- A -->
+    <div class="contents"> <!-- B -->
+      <div class="contents"> <!-- C -->
+      </div>
+    </div>
+</div>
+  
+<div class="contents"></div> <!-- D -->
+
+<!-- specificity with cascading ex 1-->
+<div class="main">
+    <div class="list subsection"></div>
+</div>
+
+<!-- specificity with cascading ex 2-->
+<div class="main">
+    <div class="list" id="subsection"></div>
+</div>
+
+<!-- specificity with cascading ex 3-->
+<div class="main">
+    <div class="list">
+      <div id="subsection"></div>
+    </div>
+</div>
+
+
+<!-- inheritance -->
+<div id="parent">
+    <div class="child"></div>
+</div>
